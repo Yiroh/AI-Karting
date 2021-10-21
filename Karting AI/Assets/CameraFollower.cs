@@ -12,12 +12,14 @@ public class CameraFollower : MonoBehaviour
     {
         transform.position = target.position;
         transform.rotation = target.rotation;
+    }
 
     // Update is called once per frame
     void FixedUpdate()
     {
         transform.position = Vector3.Lerp(transform.position, target.position, movSmoothing);
         transform.rotation = Quaternion.Slerp(transform.rotation, target.rotation, rotSmoothing);
+        transform.rotation = Quaternion.Euler(new Vector3(0, transform.rotation.eulerAngles.y, 0));
     }
     
 }
